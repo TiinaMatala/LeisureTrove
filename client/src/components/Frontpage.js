@@ -1,6 +1,12 @@
 import React from 'react'
-import styles from './Frontpage.modules.css';
+import styles from './Frontpage.module.css';
+import { Link } from "react-router-dom";
 
+
+
+export default function Frontpage() {
+    
+    // Get the modal
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
@@ -25,40 +31,43 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-
-export default function Frontpage() {
     return (
         <div>
-            <div className="header">
-                <h1>Heading</h1>
+            <div className={styles.header}>
+                <h1 style={{flexGrow: 8}}>Heading</h1>
+                
+
+                    <div className={styles.button}><Link><button>Sign in</button></Link></div>
+                    <div className={styles.button}><Link to ="/register"><button>Sign up</button></Link></div>
+
+                
             </div>
             
-            <div className="button"><button>Sign in</button></div>
-            <div className="button"><button>Sign up</button></div>
 
-            <div className="notice">
-                <h3>HOX!</h3>
-                <p>Lorem ipsum</p>
+
+            <div className={styles.notice}>
+                <h3>HOX! Lorem ipsum</h3>
             </div>
 
-            <div className={styles.flex-container}>
-                <div className={styles.flex-container > div}>
+            <div className={ styles.flexContainer }>
+                <div className={ styles.flexContainer_div }>
                     <ul>
                     <li>Activity X</li>
                     <li>Location Y</li>
                     <li>0/14 Filled</li>
                     </ul>
 
-                    <div className="button"><button id="myBtn">Join</button></div>
+                    <div className={styles.button}><button id="myBtn">Join</button></div>
 
-                    <div id="myModal" className={styles.modal}>
-                        <div className={styles.modal-content}>
-                            <span className={styles.close}>&times;</span>
+                    <div id="myModal" class="modal">
+
+                        <div class="modalContent">
+                            <span class="close">&times;</span>
                             <p>Some text in the Modal..</p>
                         </div>
 
                     </div>
+
 
                 </div>
 

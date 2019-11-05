@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Frontpage from './components/Frontpage';
 
-function App() {
-  return (
-    <div className="App">
-     
-    </div>
-  );
+
+export default class App extends Component {
+  constructor(props) 
+  {
+    super(props);
+
+    this.state = {
+      inputForm: { email:"", password:""}
+    };
+  }
+
+  render()
+  {
+    return (
+      <div className="App">
+       <Router>
+         <Route path="/" exact render={
+           (routeProps) =>
+           <Frontpage/>
+         }>
+
+         </Route>
+       </Router>
+      </div>
+    );
+  }
+ 
 }
 
-export default App;

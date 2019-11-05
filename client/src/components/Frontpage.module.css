@@ -1,0 +1,43 @@
+.header
+{
+  width: 100%;
+  height: 100px;
+  background-color: cadetblue;
+  display: flex;
+  align-items: baseline;
+
+}
+.notice
+{
+  margin: 20px;
+}
+
+.flexContainer 
+{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+
+  }
+  
+.flexContainer_div 
+  {
+    width: 400px;
+    margin: 10px;
+    line-height: 75px;
+    font-size: 20px;
+    border: 2px;
+    background-color: cadetblue;
+    align-content: center;
+  }
+
+  .button
+  {
+    display: flex;
+    float: right;
+    margin: 10px;
+    align-content: flex-end;
+  }
