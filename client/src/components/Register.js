@@ -1,10 +1,24 @@
 import React from 'react';
-import Axios from 'axios';
+import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default function Register(props) {
     
     function executeRegister(event) {
-        
+        event.preventDefault();
+        props.onSubmit(event);
+        axios.post('localhost: 3000', {
+            email: event.target.email.value,
+            password: event.target.password.value
+        })
+
+        .then(function (response) {
+            console.log(response);
+            props.history.goBack();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     function Cancel(event) {
@@ -13,7 +27,7 @@ export default function Register(props) {
     }
 
     return (
-        <div className= { styles.Register }>
+        <div>
 
             <div className= "header">
                 <h1>Header</h1>
