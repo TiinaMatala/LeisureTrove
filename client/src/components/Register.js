@@ -44,7 +44,7 @@ export default function Register(props) {
                     <input name="email"></input><br/>
 
                     <label>Password</label><br/>
-                    <input type="password" name="password"></input><br/>
+                    <input type="password" name="password"></input><br/><br/>
 
                     <input type="submit" value="Submit"/>
                     <button onClick = { Cancel }>Cancel</button>

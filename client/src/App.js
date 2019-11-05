@@ -1,17 +1,31 @@
 import React from 'react';
 import './App.css';
-import { BrowserRoute as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 //import Frontpage from './components/Frontpage';
 import Register from './components/Register';
 
 
 function App() {
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.setState({
+      inputForm: {
+        email: event.target.email.value,
+        password: event.target.password.value
+      },
+    })
+  } 
+
   return (
     <div className="App">
       <Router>
-        <Route path="/register" exact render = {
+        <Route path="/" exact render = {
           (routeProps) =>
-          <Register />
+          <Register 
+          onSubmit={ this.handleSubmit }
+          { ...routeProps } 
+          />
         }>
         </Route>
 
