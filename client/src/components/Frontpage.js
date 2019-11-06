@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './Frontpage.module.css';
 import { Link } from "react-router-dom";
+import ModalExample from './ModalExample';
 
 
 
@@ -33,7 +34,7 @@ export default function Frontpage()
                     <li>0/14 Filled</li>
                     </ul>
                         
-                    <div className={styles.button}><button>Join</button></div>
+                    <ModalExample/>
 
                 </div>
 
