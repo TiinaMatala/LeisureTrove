@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import styles from './Register.module.css';
 
 export default function Register(props) {
     
@@ -29,27 +30,39 @@ export default function Register(props) {
     return (
         <div>
 
-            <div className= "header">
+            <div className={styles.header}>
                 <h1>Header</h1>
             </div>
 
-            <div className= "registerForm">
-                <h2>Register</h2>
-                
+            <div className= {styles.registerForm}>
+                <h2>REGISTER</h2>
+                <div className={styles.container}>
                 <form onSubmit= { executeRegister }>
-                    <label>Name</label><br/>
-                    <input name="name"></input><br/>
+                  <table>
+                    <tr>
+                        <td><label>Name</label></td>
+                        <td><input name="name" placeholder="Your fullname"></input></td>
+                    </tr>
 
-                    <label>Email</label><br/>
-                    <input name="email"></input><br/>
+                    <tr>
+                        <td><label>Email</label></td>
+                        <td><input name="email" placeholder="Works as username"></input></td>
+                    </tr>
 
-                    <label>Password</label><br/>
-                    <input type="password" name="password"></input><br/><br/>
+                    <tr>
+                        <td><label>Password</label></td>
+                        <td><input type="password" name="password"></input></td>
+                    </tr>
 
-                    <input type="submit" value="Submit"/>
-                    <button onClick = { Cancel }>Cancel</button>
+                    <br/><br/>
 
+                    <tr>
+                        <td><input type="submit" value="Submit"/></td>
+                        <td><button onClick = { Cancel }>Cancel</button></td>
+                    </tr>
+                  </table>
                 </form>
+                </div>
             </div>
             
         </div>
