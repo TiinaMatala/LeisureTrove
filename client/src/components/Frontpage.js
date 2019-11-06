@@ -11,7 +11,7 @@ export default function Frontpage()
     return (
         <div>
             <div className={styles.header}>
-                <h1 style={{flexGrow: 8}}>Heading</h1>
+                <h1 className={styles.h1} style={{flexGrow: 8}}>Heading</h1>
                 
 
                     <div className={styles.button}><Link to ="/login"><button>Sign in</button></Link></div>
