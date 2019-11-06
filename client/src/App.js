@@ -10,9 +10,11 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      inputForm: { email:"", password:""}
+      inputForm: { email:"", password:""},
+      
     };
   }
+ 
 
   render()
   {
@@ -22,6 +24,7 @@ export default class App extends Component {
          <Route path="/" exact render={
            (routeProps) =>
            <Frontpage/>
+           
          }>
 
          </Route>
