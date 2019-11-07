@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-//import Frontpage from './components/Frontpage';
+import Frontpage from './components/Frontpage';
 import Register from './components/Register';
 
 
@@ -29,7 +29,7 @@ export default class App extends Component {
   return (
     <div className="App">
       <Router>
-        <Route path="/" exact render = {
+        <Route path="/register" exact render = {
           (routeProps) =>
           <Register 
           onSubmit={ this.handleSubmit }

@@ -51,7 +51,7 @@ export default function Register(props) {
 
                     <tr>
                         <td><label>Password</label></td>
-                        <td><input type="password" name="password"></input></td>
+                        <td><input type="password" name="password" placeholder="Password"></input></td>
                     </tr>
 
                     <br/><br/>

@@ -34,18 +34,6 @@ label {
     display: inline-block;
     margin-right: 20px;
   }
-
-/*.col25 {
-    float: left;
-    width: 25%;
-    margin-top: 6px;
-  }
-  
-.col75 {
-    float: left;
-    width: 60%;
-    margin-top: 6px;
-  }*/
   
   /* Clear floats after the columns */
   .row:after {
