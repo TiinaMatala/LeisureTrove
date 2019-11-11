@@ -1,5 +1,6 @@
 import React from 'react';
 import Auth from './Auth';
+import styles from './Login.module.css';
 
 export default function Login(props) {
 

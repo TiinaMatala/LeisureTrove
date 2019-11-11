@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Frontpage from './components/Frontpage';
 import Register from './components/Register';
+import Login from './components/Login';
 
 
 
@@ -12,9 +13,19 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-      
+      isAuthenticated: false,
       inputForm: { email:"", password:""}
     };
+  }
+
+
+  onLogin = () => {
+    this.setState({isAuthenticated: true})
+  }
+
+  onLoginFail = () => {
+    this.setState({isAuthenticated: false})
+    console.log("Login failed");
   }
 
   handleSubmit = (event) => {
@@ -45,6 +56,18 @@ export default class App extends Component {
             />
           }>
           </Route>
+
+          <Route path="/login" exact render={
+              (routeProps) =>
+              <Login
+              loginSuccess = { this.onLogin }
+              loginFail = { this.onLoginFail }
+              userInfo = { this.state.userInfo }
+              redirectPathOnSuccess="/loggedIn"
+              { ...routeProps }
+
+              />
+            }></Route>
 
         </Router>
 
