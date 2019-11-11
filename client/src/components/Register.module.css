@@ -10,14 +10,6 @@
     align-items: baseline;
 }
 
-input[type=text], select, textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: vertical;
-  }
-
 .registerForm {
 border-radius: 5px;
 width: 100%;
@@ -44,6 +36,17 @@ label {
   }
 
   button{
+    background-color: #e7e7e7; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+  input {
     background-color: #e7e7e7; 
     border: none;
     color: black;
