@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Auth from './Auth';
 
 export default function Login(props) {
 
@@ -23,8 +24,8 @@ export default function Login(props) {
     }
 
     return (
-        <div className = { styles.login}>
-            <div className="header">
+        <div>
+            <div className={ styles.header }>
                 <h1>Header</h1>
             </div>
 

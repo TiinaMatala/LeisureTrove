@@ -27,6 +27,7 @@ width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
+background-color: cadetblue;
 }  
 
 label {
@@ -40,6 +41,17 @@ label {
     content: "";
     display: table;
     clear: both;
+  }
+
+  button{
+    background-color: #e7e7e7; 
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
   }
 
   /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
