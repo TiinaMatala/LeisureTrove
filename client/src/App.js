@@ -5,7 +5,7 @@ import Frontpage from './components/Frontpage';
 import Register from './components/Register';
 import Login from './components/Login';
 import LoggedIn from './components/LoggedIn';
-
+import axios from 'axios';
 
 
 
@@ -35,11 +35,22 @@ export default class App extends Component {
     event.preventDefault();
     this.setState({
       inputForm: {
+        name: event.target.name.value,
         email: event.target.email.value,
         password: event.target.password.value
       },
     })
   } 
+
+  componentDidMount = () =>{
+    axios.get('http://localhost:4000/users').then(result => {
+      this.setState({ users: result.data });
+    })
+    .catch(error => {
+      console.error(error);
+      this.setState({ networkError: true })
+    })
+  }
   
   render() { 
     return (
@@ -71,14 +82,14 @@ export default class App extends Component {
 
               />
             }></Route>
-          <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
+          {/*<ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
            {
              (routeProps) => 
           <LoggedIn
          logoutSuccess = { this.onLogout }
             />  
         }>
-          </ProtectedRoute>
+      </ProtectedRoute>*/}
 
         </Router>
 

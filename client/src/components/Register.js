@@ -9,6 +9,7 @@ export default function Register(props) {
         event.preventDefault();
         props.onSubmit(event);
         axios.post('localhost: 3000', {
+            name: event.target.name.value,
             email: event.target.email.value,
             password: event.target.password.value
         })
