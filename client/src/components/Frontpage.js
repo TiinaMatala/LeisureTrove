@@ -1,13 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react';
 import styles from './Frontpage.module.css';
 import { Link } from "react-router-dom";
 import ModalExample from './ModalExample';
+import axios from 'axios';
 
 
 
-export default function Frontpage() 
+class Frontpage extends Component
 {
+    constructor() 
+    {
+      super();
+  
+      this.state = {
+        activities: []
+      };
+    }
+  
+    ComponentDidMount = () => {
+      axios.get('http://localhost:4000/activities')
+      .then(res => {
+        const activities = res.data;
+        this.setState({ activities });
+        console.log(activities);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    }
 
+    render(){
     return (
         <div>
             <div className={styles.header}>
@@ -29,10 +51,32 @@ export default function Frontpage()
             <div className={ styles.flexContainer }>
                 <div className={ styles.flexContainer_div }>
                     <ul>
-                    <li>Activity X</li>
+                    <h2>Activity X</h2>
                     <li>Location Y</li>
-                    <li>0/14 Filled</li>
+                    <li>activity info</li>
                     </ul>
+                    <p>0/14 Filled</p>
+                        
+                    <ModalExample/>
+
+                </div>
+
+            </div>
+
+            <div className={ styles.flexContainer }>
+                <div className={ styles.flexContainer_div }>
+                    <ul>
+                    {this.state.activities.map(activities => (  
+                    <li key={activities.act_id}>
+                    {activities.name}<br/>
+                    {activities.location}<br/>
+                    {activities.price}<br/>
+                    {activities.info}<br/>
+                    {activities.max_place}<br/>
+                    </li>
+                    ))}
+                    </ul>
+                    
                         
                     <ModalExample/>
 
@@ -42,4 +86,6 @@ export default function Frontpage()
         </div>
         
     );
+    }
 }
+export default Frontpage;

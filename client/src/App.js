@@ -6,9 +6,6 @@ import Register from './components/Register';
 import LoggedIn from './components/LoggedIn';
 
 
-
-
-
 export default class App extends Component {
   constructor(props) 
   {
@@ -16,7 +13,7 @@ export default class App extends Component {
 
     this.state = {
       
-      inputForm: { email:"", password:""}
+      inputForm: { email:"", password:""},
     };
   }
 
@@ -25,7 +22,7 @@ export default class App extends Component {
     this.setState({
       inputForm: {
         email: event.target.email.value,
-        password: event.target.password.value
+        password: event.target.password.value,
       },
     })
   } 
@@ -36,7 +33,9 @@ export default class App extends Component {
         <Router>  
           <Route path="/" exact render={
              (routeProps) =>
-             <Frontpage/> 
+             <Frontpage
+             { ...routeProps }
+             /> 
            }>
            </Route>
           
@@ -49,14 +48,14 @@ export default class App extends Component {
           }>
           </Route>
 
-          <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
+          {/*<ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
            {
              (routeProps) => 
           <LoggedIn
          logoutSuccess = { this.onLogout }
             />  
         }>
-          </ProtectedRoute>
+      </ProtectedRoute>*/}
 
         </Router>
 
