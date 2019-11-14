@@ -34,23 +34,27 @@ export default function Login(props) {
             <form onSubmit={ Login }>
                 <div className={ styles.loginForm }>
                     <table>
+
+                        <thead></thead>
+
+                        <tbody>
                         
                         <tr>
-                            <td><label>Email</label></td>
-                            <td><input name="email"></input></td>
+                            <td><label htmlFor="email">Email</label></td>
+                            <td><input name="email" type="text"></input></td>
                         </tr>
 
                         <tr>
-                            <td><label>Password</label></td>
+                            <td><label htmlFor="password">Password</label></td>
                             <td><input name="password" type="password"></input></td>
                         </tr>
-
-                        <br/><br/>
 
                         <tr>
                             <td><button type="submit">Login</button></td>
                             <td><button onClick={ Cancel }>Cancel</button></td>
                         </tr>
+
+                        </tbody>  
 
                     </table>
 

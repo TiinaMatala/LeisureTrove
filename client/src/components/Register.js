@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
 import styles from './Register.module.css';
 
 export default function Register(props) {
@@ -8,8 +7,7 @@ export default function Register(props) {
     function executeRegister(event) {
         event.preventDefault();
         props.onSubmit(event);
-        axios.post('http://localhost:4000', {
-            id: event.target.id.value,
+        axios.post('http://localhost:4000/users', {
             name: event.target.name.value,
             email: event.target.email.value,
             password: event.target.password.value
@@ -41,27 +39,32 @@ export default function Register(props) {
                 <div className={styles.container}>
                 <form onSubmit= { executeRegister }>
                   <table>
+                    <thead>
+
+                    </thead>
+
+                    <tbody>
+
                     <tr>
-                        <td><label>Name</label></td>
-                        <td><input name="name" placeholder="Your fullname"></input></td>
+                        <td><label htmlFor="name">Name</label></td>
+                        <td><input name="name" type="text" placeholder="Your fullname"></input></td>
                     </tr>
 
                     <tr>
-                        <td><label>Email</label></td>
-                        <td><input name="email" placeholder="Works as username"></input></td>
+                        <td><label htmlFor="email">Email</label></td>
+                        <td><input name="email" type="text" placeholder="Works as username"></input></td>
                     </tr>
 
                     <tr>
-                        <td><label>Password</label></td>
+                        <td><label htmlFor="password">Password</label></td>
                         <td><input type="password" name="password" placeholder="Password"></input></td>
                     </tr>
-
-                    <br/><br/>
 
                     <tr>
                         <td><input type="submit" value="Submit"/></td>
                         <td><button onClick = { Cancel }>Cancel</button></td>
                     </tr>
+                  </tbody>
                   </table>
                 </form>
                 </div>
