@@ -26,10 +26,21 @@ export default function loggedIn(props) {
          </div>
 
          <div classname={ styles.activities}>
-             <div classname ></div>
+            
+             <Link to='/activities' onClick={() => props.Add(users.id,users.name, users.email)}>Activities</Link>
+            
          </div>
 
+         <div classname={ styles.userinfo}>
+            
+            <Link to='/userinfo' onClick={() => props.Add(users.id,users.name, users.email,users.password)}>user information</Link>
+           
         </div>
+
+        </div>
+        
+    )
+}
 
                           
 
