@@ -17,12 +17,12 @@ class Frontpage extends Component
       };
     }
   
-    ComponentDidMount = () => {
+    componentDidMount = () => {
       axios.get('http://localhost:4000/activities')
       .then(res => {
         const activities = res.data;
         this.setState({ activities });
-        console.log(activities);
+        console.log(this.state.activities);
       })
       .catch(error => {
         console.log(error.response);
@@ -43,47 +43,25 @@ class Frontpage extends Component
             </div>
             
 
-
             <div className={styles.notice}>
                 <h3>HOX! Lorem ipsum</h3>
-            </div>
-
-            <div className={ styles.flexContainer }>
-                <div className={ styles.flexContainer_div }>
-                    <ul>
-                    <h2>Activity X</h2>
-                    <li>Location Y</li>
-                    <li>activity info</li>
-                    </ul>
-                    <p>0/14 Filled</p>
-                        
-                    <ModalExample/>
-
-                </div>
 
             </div>
-
-            <div className={ styles.flexContainer }>
-                <div className={ styles.flexContainer_div }>
-                    <ul>
-                    {this.state.activities.map(activities => (  
-                    <li key={activities.act_id}>
-                    {activities.name}<br/>
-                    {activities.location}<br/>
-                    {activities.price}<br/>
-                    {activities.info}<br/>
-                    {activities.max_place}<br/>
-                    </li>
-                    ))}
-                    </ul>
-                    
-                        
-                    <ModalExample/>
-
-                </div>
-
+              {this.state.activities.map(activities => (  
+                <ul key={activities.act_id} className={styles.ul}>
+                  <div className={ styles.flexContainer }>
+                    <div className={ styles.flexContainer_div }>
+                      <li><h2>{activities.name}</h2></li>
+                      <li>{activities.location}</li>
+                      <li>{activities.price} €</li>
+                      <li><p>{activities.act_info}</p></li>
+                      <li>/{activities.max_places}</li>
+                      <ModalExample/>
+                    </div>
+                  </div>
+                </ul>))
+              }
             </div>
-        </div>
         
     );
     }

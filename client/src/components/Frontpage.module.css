@@ -29,13 +29,14 @@
   
 .flexContainer_div 
   {
-    width: 400px;
+    width: 600px;
     margin: 10px;
     line-height: 75px;
     font-size: 20px;
     border: 2px;
     background-color: cadetblue;
     align-content: center;
+    padding: 10px;
   }
 
   .button
@@ -60,4 +61,8 @@
 .h1{
   font-size: 60px;
   margin: 20px;
+}
+
+.ul{
+  list-style: none;
 }
