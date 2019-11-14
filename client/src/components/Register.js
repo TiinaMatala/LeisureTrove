@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styles from './Register.module.css';
+import myAuth from './Auth';
 
 export default function Register(props) {
     
@@ -11,6 +12,9 @@ export default function Register(props) {
             name: event.target.name.value,
             email: event.target.email.value,
             password: event.target.password.value
+        },
+        {
+            auth:myAuth
         })
 
         .then(function (response) {
