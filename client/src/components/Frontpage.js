@@ -45,8 +45,15 @@ class Frontpage extends Component
 
             <div className={styles.notice}>
                 <h3>HOX! Lorem ipsum</h3>
-
             </div>
+
+            <div className={styles.filter}>
+              <button>Music</button><br/>
+              <button>Arts</button><br/>
+              <button>Outdoors</button><br/>
+              <button>Indoors</button>
+            </div>
+
               {this.state.activities.map(activities => (  
                 <ul key={activities.act_id} className={styles.ul}>
                   <div className={ styles.flexContainer }>
