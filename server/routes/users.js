@@ -49,7 +49,17 @@ router.get('/:id?', function(req, res, next) {
   }
 });
 
-  app.post('/users', 
+router.post('/', function(req, res, next) {
+  users.add(req.body, function(err, count) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(req.body); //or return count for 1 & 0
+    }
+  });
+});
+
+  {/*router.post('/', 
   passport.authenticate('basic', { session: false }),
   (req, res) => {
   let email = req.body.email.trim();
@@ -71,7 +81,7 @@ router.get('/:id?', function(req, res, next) {
     console.log("incorrect email or password, both must be strings");
     res.sendStatus(400);
   }
-})
+})*/}
 
 router.delete('/:id', 
   passport.authenticate('basic', { session: false }),
