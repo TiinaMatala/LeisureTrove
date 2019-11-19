@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Frontpage from './components/Frontpage';
 import Register from './components/Register';
 import LoggedIn from './components/LoggedIn';
-
+import ProtectedRoute from './components/protectedroute';
 
 
 
@@ -20,6 +20,12 @@ export default class App extends Component {
     };
   }
 
+
+  onLogout = () => {
+
+    this.setState({ isAuthenticated : false})
+
+  }
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
@@ -48,10 +54,11 @@ export default class App extends Component {
             />
           }>
           </Route>
+         
 
-          <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
-           {
-             (routeProps) => 
+          <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/LoggedIn" exact render =
+
+                 { (routeProps) => 
           <LoggedIn
          logoutSuccess = { this.onLogout }
             />  
