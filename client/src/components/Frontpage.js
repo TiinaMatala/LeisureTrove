@@ -29,6 +29,54 @@ class Frontpage extends Component
       });
     }
 
+    typeArts = () => {
+      axios.get('http://localhost:4000/activities/act_type/arts')
+      .then(res => {
+        const activities = res.data;
+        this.setState({ activities });
+        console.log(this.state.activities);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    }
+
+    typeMusic = () => {
+      axios.get('http://localhost:4000/activities/act_type/music')
+      .then(res => {
+        const activities = res.data;
+        this.setState({ activities });
+        console.log(this.state.activities);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    }
+
+    typeOutdoors = () => {
+      axios.get('http://localhost:4000/activities/act_type/outdoors')
+      .then(res => {
+        const activities = res.data;
+        this.setState({ activities });
+        console.log(this.state.activities);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    }
+
+    typeIndoors = () => {
+      axios.get('http://localhost:4000/activities/act_type/indoors')
+      .then(res => {
+        const activities = res.data;
+        this.setState({ activities });
+        console.log(this.state.activities);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    }
+
     render(){
     return (
         <div>
@@ -48,10 +96,11 @@ class Frontpage extends Component
             </div>
 
             <div className={styles.filter}>
-              <button>Music</button><br/>
-              <button>Arts</button><br/>
-              <button>Outdoors</button><br/>
-              <button>Indoors</button>
+              <button onClick={this.componentDidMount}>All</button><br/>
+              <button onClick={this.typeMusic}>Music</button><br/>
+              <button onClick={this.typeArts}>Arts</button><br/>
+              <button onClick={this.typeOutdoors}>Outdoors</button><br/>
+              <button onClick={this.typeIndoors}>Indoors</button>
             </div>
 
               {this.state.activities.map(activities => (  

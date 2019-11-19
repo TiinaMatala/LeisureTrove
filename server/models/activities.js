@@ -1,5 +1,6 @@
 var db = require('../database');
   var activities = {
+
     get: function(callback) {
       return db.query('select * from activities', callback);
     },
@@ -22,6 +23,13 @@ var db = require('../database');
         [activities.name, activities.location, activities.price, activities.max_places, activities.act_info, activities.act_type, id],
         callback
       );
+    },
+    getByType:function(value,callback) {
+      return db.query('select * from activities where act_type=? order by act_id desc',
+      [value], callback);
     }
+      
+    
+
   };
   module.exports = activities;
