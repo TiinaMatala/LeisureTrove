@@ -14,7 +14,7 @@ export default function Register(props) {
             password: event.target.password.value
         },
         {
-            auth:myAuth
+            auth: myAuth
         })
 
         .then(function (response) {

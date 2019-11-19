@@ -4,6 +4,7 @@ var users = require('../models/users');
 const Strategy = require('passport-http').BasicStrategy;
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const saltRounds = 4;
 
 passport.use(new Strategy((email, password, cb) => {
   db.query('SELECT id, email, password FROM users WHERE email = ?', [email]).then(dbResults => {
@@ -78,6 +79,16 @@ router.put('/:id',
       res.json(err);
     } else {
       res.json(rows);
+    }
+  });
+});
+
+router.post('/login', function(req, res, next) {
+  users.login(req.body, function(err, count) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(req.body); //or return count for 1 & 0
     }
   });
 });

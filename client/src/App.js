@@ -31,6 +31,10 @@ export default class App extends Component {
     console.log("Login failed");
   }
 
+  onLogout = () => {
+    this.setState({ isAuthenticated : false})
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
     this.setState({
