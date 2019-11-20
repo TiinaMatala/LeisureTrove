@@ -9,8 +9,8 @@ var db = require('../database');
     },
     add: function(activities, callback) {
       return db.query(
-        'insert into activities values(?,?,?,?,?,?,?)',
-        [activities.act_id, activities.name, activities.location, activities.price, activities.max_places, activities.act_info, activities.act_type],
+        'insert into activities values(?,?,?,?,?,?,?,?)',
+        [activities.act_id, activities.name, activities.location, activities.price, activities.max_places, activities.filled_places, activities.act_info, activities.act_type],
         callback
       );
     },
@@ -19,17 +19,22 @@ var db = require('../database');
     },
     update: function(id, activities, callback) {
       return db.query(
-        'update activities set name=?,location=?, price=?, max_places=?, act_info=?, act_type=? where act_id=?',
-        [activities.name, activities.location, activities.price, activities.max_places, activities.act_info, activities.act_type, id],
+        'update activities set name=?,location=?, price=?, max_places=?, filled_places=?, act_info=?, act_type=? where act_id=?',
+        [activities.name, activities.location, activities.price, activities.max_places, activities.filled_places, activities.act_info, activities.act_type, id],
         callback
       );
     },
     getByType:function(value,callback) {
       return db.query('select * from activities where act_type=? order by act_id desc',
       [value], callback);
-    }
-      
+    },
     
-
+    /*joinUpdate:function(value, callback) {
+      return db.query('update activities set filled_places = (`filled_places`+1) ');
+    },
+    addUserId:function(id, callback) {
+      return db.query();
+    }
+    */
   };
   module.exports = activities;
