@@ -7,17 +7,19 @@ import Login from './components/Login';
 import LoggedIn from './components/LoggedIn';
 import axios from 'axios';
 
-
-
-
 export default class App extends Component {
   constructor(props) 
   {
     super(props);
 
     this.state = {
+<<<<<<< HEAD
       isAuthenticated: false,
       inputForm: { email:"", password:""}
+=======
+      
+      inputForm: { email:"", password:""},
+>>>>>>> master
     };
   }
 
@@ -41,7 +43,7 @@ export default class App extends Component {
       inputForm: {
         name: event.target.name.value,
         email: event.target.email.value,
-        password: event.target.password.value
+        password: event.target.password.value,
       },
     })
   } 
@@ -62,7 +64,9 @@ export default class App extends Component {
         <Router>  
           <Route path="/" exact render={
              (routeProps) =>
-             <Frontpage/> 
+             <Frontpage
+             { ...routeProps }
+             /> 
            }>
            </Route>
           
