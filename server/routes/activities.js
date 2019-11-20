@@ -50,4 +50,16 @@ var express = require('express');
       }
     });
   });
+  router.get('/act_type/:value?', function(req, res, next) {
+    activities.getByType(req.params.value, function(err, result) {
+      if (err) {
+        res.json(err);
+      } else {
+        res.json(result);
+      }
+    });
+});
+
+
+  
   module.exports = router;
