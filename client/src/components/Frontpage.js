@@ -29,44 +29,9 @@ class Frontpage extends Component
       });
     }
 
-    typeArts = () => {
-      axios.get('http://localhost:4000/activities/act_type/arts')
-      .then(res => {
-        const activities = res.data;
-        this.setState({ activities });
-        console.log(this.state.activities);
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-    }
-
-    typeMusic = () => {
-      axios.get('http://localhost:4000/activities/act_type/music')
-      .then(res => {
-        const activities = res.data;
-        this.setState({ activities });
-        console.log(this.state.activities);
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-    }
-
-    typeOutdoors = () => {
-      axios.get('http://localhost:4000/activities/act_type/outdoors')
-      .then(res => {
-        const activities = res.data;
-        this.setState({ activities });
-        console.log(this.state.activities);
-      })
-      .catch(error => {
-        console.log(error.response);
-      });
-    }
-
-    typeIndoors = () => {
-      axios.get('http://localhost:4000/activities/act_type/indoors')
+/*filtering button function */
+    getByType(type){
+      axios.get('http://localhost:4000/activities/act_type/'+type)
       .then(res => {
         const activities = res.data;
         this.setState({ activities });
@@ -90,19 +55,21 @@ class Frontpage extends Component
                 
             </div>
             
-
+{/*this is the info box */}
             <div className={styles.notice}>
                 <h3>HOX! Lorem ipsum</h3>
             </div>
 
+{/*these are the buttons for filtering activities */}
             <div className={styles.filter}>
               <button onClick={this.componentDidMount}>All</button><br/>
-              <button onClick={this.typeMusic}>Music</button><br/>
-              <button onClick={this.typeArts}>Arts</button><br/>
-              <button onClick={this.typeOutdoors}>Outdoors</button><br/>
-              <button onClick={this.typeIndoors}>Indoors</button>
+              <button onClick={this.getByType.bind(this, "music")}>Music</button><br/>
+              <button onClick={this.getByType.bind(this, "arts")}>Arts</button><br/>
+              <button onClick={this.getByType.bind(this, "outdoors")}>Outdoors</button><br/>
+              <button onClick={this.getByType.bind(this, "indoors")}>Indoors</button>
             </div>
 
+{/*this is the activity card */}
               {this.state.activities.map(activities => (  
                 <ul key={activities.act_id} className={styles.ul}>
                   <div className={ styles.flexContainer }>
