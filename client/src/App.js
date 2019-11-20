@@ -13,13 +13,8 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-<<<<<<< HEAD
       isAuthenticated: false,
       inputForm: { email:"", password:""}
-=======
-      
-      inputForm: { email:"", password:""},
->>>>>>> master
     };
   }
 
