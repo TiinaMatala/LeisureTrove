@@ -9,7 +9,7 @@ export default function Login(props) {
         props.history.goBack();
     }
 
-    function Login(event) {
+    function login(event) {
         event.preventDefault();
         Auth.authenticate(event.target['email'].value, event.target['password'].value)
         .then(result =>
@@ -31,8 +31,10 @@ export default function Login(props) {
             </div>
 
             <h2>Login</h2>
-            <form onSubmit={ Login }>
+            
+            <form onSubmit={ login }>
                 <div className={ styles.loginForm }>
+                
                     <table>
 
                         <thead></thead>

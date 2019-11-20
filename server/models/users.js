@@ -38,11 +38,11 @@ var users = {
       callback
     );
   },
-  login: function (email, callback) {
+  /*login: function (email, loginPassword, callback) {
     return db.query('select password from users where email=?',
-    [users.email, hash],
+    [email],
     callback
     );
-   }
+   }*/
 };
 module.exports = users ;
