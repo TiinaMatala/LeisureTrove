@@ -83,12 +83,24 @@ router.put('/:id',
   });
 });
 
-router.get('/login/:email',
+router.post('/login', function(req, res, next) {
+  users.login(req.body, function(err, count) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(req.body);
+    }
+
+  });
+
+});
+
+/*router.get('/login/:email',
         passport.authenticate('basic', { session: false }),
         (req, res) => {
          db.query('SELECT password FROM users WHERE email = ?', [req.params.email]).then(results => {
             res.json(results);
           })
-        });
+        });*/
 
 module.exports = router;
