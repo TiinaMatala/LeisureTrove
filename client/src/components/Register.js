@@ -19,9 +19,16 @@ export default function Register(props) {
             console.log(response);
             props.history.goBack();
           })
-          .catch(function (error) {
-            console.log(error);
-          });
+          .catch(function (res) {
+            console.log(res.data);
+            if(res.data.errno>0) {
+                return res.data.errno;
+                this.setState({
+                  message: "ERROR: "+res.data.sqlMessage
+                });
+              }
+          
+        });
     }
 
     function Cancel(event) {

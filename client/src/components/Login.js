@@ -1,6 +1,7 @@
 import React from 'react';
 import Auth from './Auth';
 import styles from './Login.module.css';
+import axios from 'axios';
 
 export default function Login(props) {
 
@@ -11,17 +12,20 @@ export default function Login(props) {
 
     function login(event) {
         event.preventDefault();
-        Auth.authenticate(event.target['email'].value, event.target['password'].value)
-        .then(result =>
-            {
-                props.loginSuccess();
-                props.history.push(props.redirectPathOnSuccess);
-            })
-        .catch(() => {
-            props.loginFail();
+        props.onSubmit(event);
+        axios.post('http://localhost:4000/users', {
+            email: event.target.email.value,
+            password: event.target.password.value
         }
-
         )
+
+        .then(function (response) {
+            console.log(response);
+            props.history.goBack();
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
 
     return (

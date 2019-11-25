@@ -19,18 +19,7 @@ export default class App extends Component {
   }
 
 
-  onLogin = () => {
-    this.setState({isAuthenticated: true})
-  }
-
-  onLoginFail = () => {
-    this.setState({isAuthenticated: false})
-    console.log("Login failed");
-  }
-
-  onLogout = () => {
-    this.setState({ isAuthenticated : false})
-  }
+ 
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -56,6 +45,7 @@ export default class App extends Component {
   render() { 
     return (
       <div className="App">
+        
         <Router>  
           <Route path="/" exact render={
              (routeProps) =>
@@ -73,12 +63,11 @@ export default class App extends Component {
             />
           }>
           </Route>
+          
 
           <Route path="/login" exact render={
               (routeProps) =>
               <Login
-              loginSuccess = { this.onLogin }
-              loginFail = { this.onLoginFail }
               userInfo = { this.state.userInfo }
               redirectPathOnSuccess="/loggedIn"
               { ...routeProps }
