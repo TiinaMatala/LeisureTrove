@@ -59,7 +59,15 @@ var express = require('express');
       }
     });
 });
-
+router.get('/act_id/:id?', function(req, res, next) {
+  activities.joinUpdate(req.params.id, function(err, rows) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(rows);
+    }
+  });
+});
 
   
   module.exports = router;

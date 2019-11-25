@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import styles from './ModalExample.module.css';
+import axios from 'axios';
+
 
 class ModalExample extends React.Component {
   constructor(props) {
@@ -15,6 +17,17 @@ class ModalExample extends React.Component {
   toggle() {
     this.setState({
       modal: !this.state.modal
+    });
+  }
+
+  /* function for confirm button*/
+  confirm(id){
+    axios.get('http://localhost:4000/activities/act_id/'+id)
+    .then(res => {
+      console.log('success')      
+    })
+    .catch(error => {
+      console.log(error.response);
     });
   }
 
@@ -47,7 +60,7 @@ class ModalExample extends React.Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color = "primary" className={styles.button} onClick={this.toggle}>Confirm</Button>{' '}
+            <Button color = "primary" className={styles.button} onClick={this.confirm.bind()}>Confirm</Button>{' '}
             <Button className={styles.button} onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
