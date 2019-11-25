@@ -1,52 +1,68 @@
-import React from 'react';
-import axios from 'axios';
+import React, { Component } from 'react';
 import styles from './Register.module.css';
-import myAuth from './Auth';
+import axios from 'axios';
 
-export default function Register(props) {
-    
-    function executeRegister(event) {
-        event.preventDefault();
-        props.onSubmit(event);
-        axios.post('http://localhost:4000/users', {
-            name: event.target.name.value,
-            email: event.target.email.value,
-            password: event.target.password.value
-        }
-        )
+export default class Register extends Component {
 
-        .then(function (response) {
-            console.log(response);
-            props.history.goBack();
-          })
-          .catch(function (res) {
-            console.log(res.data);
-            if(res.data.errno>0) {
-                return res.data.errno;
-                this.setState({
-                  message: "ERROR: "+res.data.sqlMessage
-                });
-              }
-          
-        });
-    }
+    constructor(props) 
+  {
+    super(props);
 
-    function Cancel(event) {
-        event.preventDefault();
-        props.history.goBack();
-    }
+    this.state = {
+      message: "",
+      name: "",
+      email: "",
+      password: ""
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+ 
+executeRegister = event => {
+    event.preventDefault();
+   
+    const { name, email, password } = this.state;
 
-    return (
-        <div>
+    axios
+    .post('http://localhost:4000/users', 
+    { name, email, password })
 
-            <div className={styles.header}>
+    .then(res => {
+        console.log(res.data);
+        if(res.data.errno>0) {
+            this.setState({
+              message: "ERROR: "+res.data.sqlMessage
+            });
+          }
+        else {
+            this.props.history.goBack();
+          }
+    });
+}
+
+Cancel = event => {
+    event.preventDefault();
+    this.props.history.goBack();
+}
+
+onChange = e => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  };
+
+
+    render() {
+        return (
+            <div>
+                <div className={styles.header}>
                 <h1>Header</h1>
+                {this.state.message}
             </div>
 
             <div className= {styles.registerForm}>
                 <h2>REGISTER</h2>
                 <div className={styles.container}>
-                <form onSubmit= { executeRegister }>
+                <form onSubmit= { this.executeRegister.bind(this) }>
                   <table>
                     <thead>
 
@@ -56,31 +72,29 @@ export default function Register(props) {
 
                     <tr>
                         <td><label htmlFor="name">Name</label></td>
-                        <td><input name="name" type="text" placeholder="Your fullname"></input></td>
+                        <td><input name="name" type="text" placeholder="Your fullname" onChange={this.onChange}></input></td>
                     </tr>
 
                     <tr>
                         <td><label htmlFor="email">Email</label></td>
-                        <td><input name="email" type="text" placeholder="Works as username"></input></td>
+                        <td><input name="email" type="text" placeholder="Works as username" onChange={this.onChange}></input></td>
                     </tr>
 
                     <tr>
                         <td><label htmlFor="password">Password</label></td>
-                        <td><input type="password" name="password" placeholder="Password"></input></td>
+                        <td><input type="password" name="password" placeholder="Password" onChange={this.onChange}></input></td>
                     </tr>
 
                     <tr>
                         <td><input type="submit" value="Submit"/></td>
-                        <td><button onClick = { Cancel }>Cancel</button></td>
+                        <td><button onClick = { this.Cancel.bind(this) }>Cancel</button></td>
                     </tr>
                   </tbody>
                   </table>
                 </form>
                 </div>
             </div>
-            
-        </div>
-    )
+            </div>
+        )
+    }
 }
-
-
