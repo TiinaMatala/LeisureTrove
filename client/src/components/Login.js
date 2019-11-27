@@ -46,14 +46,14 @@ export default class Login extends Component {
               console.log(res.data);
              // localStorage.setItem('localStorageId', res.data);
               localStorage.setItem('localStorageEmail', email);
+              this.props.loginSuccess();
+              this.props.history.push(this.props.redirectPathOnSuccess);
             }
             this.setState({email: localStorage.getItem('localStorageEmail')});
           })
-          .catch(error => {
-            this.setState({
-              message: "ERROR: You have to be administrator to access this option "
-            });
-          })
+          .catch(() => {
+            this.props.loginFail();
+        })
       };
 
   Cancel = event => {
@@ -97,7 +97,7 @@ onChange = e => {
 
                         <tr>
                             <td><button type="submit">Login</button></td>
-                            <td><button onClick={ this.Cancel.bind(this) }>Cancel</button></td>
+                            <td><button onClick={ this.Cancel }>Cancel</button></td>
                         </tr>
 
                         </tbody>  

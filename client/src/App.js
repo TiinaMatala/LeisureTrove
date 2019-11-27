@@ -5,6 +5,7 @@ import Frontpage from './components/Frontpage';
 import Register from './components/Register';
 import Login from './components/Login';
 import LoggedIn from './components/LoggedIn';
+import ProtectedRoute from './components/ProtectedRoute';
 import axios from 'axios';
 
 export default class App extends Component {
@@ -18,7 +19,17 @@ export default class App extends Component {
     };
   }
 
+  onLogin = () => {
+    this.setState({ isAuthenticated: true })
+  }
 
+  onLogout = () => {
+    this.setState({ isAuthenticated : false})
+  }
+  onLoginFail = () => {
+    this.setState({ isAuthenticated: false });
+    console.log("login failed");
+  }
  
 
   handleSubmit = (event) => {
@@ -68,19 +79,21 @@ export default class App extends Component {
               (routeProps) =>
               <Login
               userInfo = { this.state.userInfo }
+              loginSuccess = { this.onLogin }
+              loginFail = { this.onLoginFail }
               redirectPathOnSuccess="/loggedIn"
               { ...routeProps }
 
               />
             }></Route>
-          {/*<ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
+          <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
            {
              (routeProps) => 
           <LoggedIn
          logoutSuccess = { this.onLogout }
             />  
         }>
-      </ProtectedRoute>*/}
+      </ProtectedRoute>
 
         </Router>
 

@@ -25,8 +25,8 @@ export default function loggedIn(props) {
 
          </div>
 
-         <div classname={ styles.activities}>
-             <div classname ></div>
+         <div className={ styles.activities}>
+             <div className ></div>
          </div>
 
         </div>
