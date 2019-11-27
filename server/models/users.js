@@ -43,12 +43,6 @@ var users = {
   });
 
 }
-  
-  /*login: function (email, loginPassword, callback) {
-    return db.query('select password from users where email=?',
-    [email],
-    callback
-    );
-   }*/
+
 };
 module.exports = users ;

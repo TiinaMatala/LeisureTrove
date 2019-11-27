@@ -45,7 +45,6 @@ export default class App extends Component {
   render() { 
     return (
       <div className="App">
-        
         <Router>  
           <Route path="/" exact render={
              (routeProps) =>

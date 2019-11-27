@@ -17,18 +17,16 @@ export default class Login extends Component {
   }
 
   componentDidMount() {
-    let myauth=MySingleton.getInstance();
-    this.setState({email:myauth.getUser()});
+    this.setState({email: localStorage.getItem('localStorageEmail')});
   }
 
   login = event => {
-        let myauth=MySingleton.getInstance();
         console.log("login");
         event.preventDefault();
         const { email, password } = this.state;
     
         axios
-          .post('http://localhost:4000/users/login', { email, password},
+          .post('http://localhost:4000/users/login', { email, password },
             )
           .then(res => {
             if(res.data.errno>0) {
@@ -41,13 +39,15 @@ export default class Login extends Component {
             } 
             if(res.data==false){
               console.log('un auth');
-              myauth.setAuth('Quest','');
+              localStorage.setItem('email','Guest');
             }
             else {
               console.log('authorized');
-              myauth.setAuth(res.data,this.state.password);
+              console.log(res.data);
+             // localStorage.setItem('localStorageId', res.data);
+              localStorage.setItem('localStorageEmail', email);
             }
-            this.setState({email:myauth.getUser()});
+            this.setState({email: localStorage.getItem('localStorageEmail')});
           })
           .catch(error => {
             this.setState({
@@ -55,12 +55,6 @@ export default class Login extends Component {
             });
           })
       };
-
-  logout(){
-    var myauth=MySingleton.getInstance();
-    myauth.setAuth('Quest',null);
-    this.setState({email:"Quest"});
-    }
 
   Cancel = event => {
     event.preventDefault();
