@@ -78,8 +78,8 @@ class Frontpage extends Component
                       <li>{activities.location}</li>
                       <li>{activities.price} €</li>
                       <li><p>{activities.act_info}</p></li>
-                      <li>/{activities.max_places}</li>
-                      <ModalExample/>
+                      <li>{activities.filled_places}/{activities.max_places}</li>
+                      <ModalExample id={activities.act_id} />
                     </div>
                   </div>
                 </ul>))
