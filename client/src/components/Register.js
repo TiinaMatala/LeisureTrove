@@ -87,7 +87,7 @@ onChange = e => {
 
                     <tr>
                         <td><input type="submit" value="Submit"/></td>
-                        <td><button onClick = { this.Cancel.bind(this) }>Cancel</button></td>
+                        <td><button onClick = { this.Cancel }>Cancel</button></td>
                     </tr>
                   </tbody>
                   </table>
