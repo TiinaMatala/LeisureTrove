@@ -1,72 +1,100 @@
-import React from 'react';
-import axios from 'axios';
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
 import styles from './Register.module.css';
+import axios from 'axios';
 
-export default function Register(props) {
-    
-    function executeRegister(event) {
-        event.preventDefault();
-        props.onSubmit(event);
-        axios.post('localhost: 3000', {
-            email: event.target.email.value,
-            password: event.target.password.value
-        })
+export default class Register extends Component {
 
-        .then(function (response) {
-            console.log(response);
-            props.history.goBack();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-    }
+    constructor(props) 
+  {
+    super(props);
 
-    function Cancel(event) {
-        event.preventDefault();
-        props.history.goBack();
-    }
+    this.state = {
+      message: "",
+      name: "",
+      email: "",
+      password: ""
+    };
+    this.onChange = this.onChange.bind(this);
+  }
+ 
+executeRegister = event => {
+    event.preventDefault();
+   
+    const { name, email, password } = this.state;
 
-    return (
-        <div>
+    axios
+    .post('http://localhost:4000/users', 
+    { name, email, password })
 
-            <div className={styles.header}>
+    .then(res => {
+        console.log(res.data);
+        if(res.data.errno>0) {
+            this.setState({
+              message: "ERROR: "+res.data.sqlMessage
+            });
+          }
+        else {
+            this.props.history.goBack();
+          }
+    });
+}
+
+Cancel = event => {
+    event.preventDefault();
+    this.props.history.goBack();
+}
+
+onChange = e => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
+  };
+
+
+    render() {
+        return (
+            <div>
+                <div className={styles.header}>
                 <h1>Header</h1>
+                {this.state.message}
             </div>
 
             <div className= {styles.registerForm}>
                 <h2>REGISTER</h2>
                 <div className={styles.container}>
-                <form onSubmit= { executeRegister }>
+                <form onSubmit= { this.executeRegister.bind(this) }>
                   <table>
+                    <thead>
+
+                    </thead>
+
+                    <tbody>
+
                     <tr>
-                        <td><label>Name</label></td>
-                        <td><input name="name" placeholder="Your fullname"></input></td>
+                        <td><label htmlFor="name">Name</label></td>
+                        <td><input name="name" type="text" placeholder="Your fullname" onChange={this.onChange}></input></td>
                     </tr>
 
                     <tr>
-                        <td><label>Email</label></td>
-                        <td><input name="email" placeholder="Works as username"></input></td>
+                        <td><label htmlFor="email">Email</label></td>
+                        <td><input name="email" type="text" placeholder="Works as username" onChange={this.onChange}></input></td>
                     </tr>
 
                     <tr>
-                        <td><label>Password</label></td>
-                        <td><input type="password" name="password" placeholder="Password"></input></td>
+                        <td><label htmlFor="password">Password</label></td>
+                        <td><input type="password" name="password" placeholder="Password" onChange={this.onChange}></input></td>
                     </tr>
-
-                    <br/><br/>
 
                     <tr>
                         <td><input type="submit" value="Submit"/></td>
-                        <td><button onClick = { Cancel }>Cancel</button></td>
+                        <td><button onClick = { this.Cancel.bind(this) }>Cancel</button></td>
                     </tr>
+                  </tbody>
                   </table>
                 </form>
                 </div>
             </div>
-            
-        </div>
-    )
+            </div>
+        )
+    }
 }
-
-
