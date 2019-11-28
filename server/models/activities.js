@@ -29,12 +29,12 @@ var db = require('../database');
       [value], callback);
     },
     
-    /*joinUpdate:function(value, callback) {
-      return db.query('update activities set filled_places = (`filled_places`+1) ');
+    joinUpdate:function(id, callback) {
+      return db.query('update activities set filled_places = filled_places+1 where act_id=? ', [id], callback);
     },
     addUserId:function(id, callback) {
-      return db.query();
+      return db.query('',[id], callback);
     }
-    */
+    
   };
   module.exports = activities;
