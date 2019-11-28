@@ -92,7 +92,7 @@ router.post('/login', function(request, response) {
     [email], function(error, results, fields) {
 			if (results.length > 0) {
         if(bcrypt.compareSync(loginPassword, results[0].password)){
-          response.send(email);
+          response.send(results[0].id.toString());
           console.log("id=",results[0].id);
         }
 
