@@ -26,7 +26,7 @@ export default class Login extends Component {
         const { email, password } = this.state;
     
         axios
-          .post('http://localhost:4000/users/login', { email, password },
+          .post('http://localhost:4000/users/login', { email, password }
             )
           .then(res => {
             if(res.data.errno>0) {

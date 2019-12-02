@@ -9,7 +9,7 @@ class ModalExample extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      id:this.props.id
+      a_id:this.props.a_id
     };
 
     this.toggle = this.toggle.bind(this);
@@ -22,8 +22,8 @@ class ModalExample extends React.Component {
   }
 
   /* function for confirm button*/
-  confirm(id){
-    axios.get('http://localhost:4000/activities/act_id/'+id)
+  confirm(a_id){
+    axios.get('http://localhost:4000/activities/act_id/'+a_id)
     .then(res => {
       console.log('success');    
     })
@@ -66,7 +66,7 @@ class ModalExample extends React.Component {
 
           </ModalBody>
           <ModalFooter>
-            <Button color = "primary" className={styles.button} onClick={this.confirm.bind(this, this.state.id)}>Confirm</Button>{' '}
+            <Button color = "primary" className={styles.button} onClick={this.confirm.bind(this, this.state.a_id)}>Confirm</Button>{' '}
             <Button className={styles.button} onClick={this.toggle}>Cancel</Button>
           </ModalFooter>
         </Modal>
