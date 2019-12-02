@@ -46,6 +46,7 @@ export default class Login extends Component {
               console.log(res.data);
              // localStorage.setItem('localStorageId', res.data);
               localStorage.setItem('localStorageEmail', email);
+              localStorage.setItem('userId', res.data);
               this.props.loginSuccess();
               this.props.history.push(this.props.redirectPathOnSuccess);
             }
