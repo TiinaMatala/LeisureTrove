@@ -37,7 +37,7 @@ export default class Login extends Component {
             else {
               this.componentDidMount();
             } 
-            if(res.data==false){
+            if(res.data===false){
               console.log('un auth');
               localStorage.setItem('email','Guest');
             }

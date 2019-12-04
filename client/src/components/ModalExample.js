@@ -32,34 +32,44 @@ class ModalExample extends React.Component {
   confirm(a_id){
 
     // refers to function in Confirm.js
-       Confirm(document.getElementById('email'), document.getElementById('password'))
-
-    // executed when the email and pass are correct: 
-    // combine user id with act id in table act_to_user
-       axios.post('http://localhost:4000/activities/act_to_user',{act_id:a_id, id:localStorage.getItem('userId')})
-        .then(res => {
-          console.log('success');    
-        })
-        .catch(error => {
-          console.log(error.response);
-        });
+      let email=document.getElementById('email').value;
+      let password=document.getElementById('password').value;
+        Confirm(email, password);
+        console.log(localStorage.getItem('userId'));
+      let userId = localStorage.getItem('userId');
         
-    // fill a place in table activities column filled_places 
-    // gets act_id from state "a_id" 
-        axios.get('http://localhost:4000/activities/act_id/'+a_id)
-        .then(res => {
-          console.log('success');    
-        })
-        .catch(error => {
-          console.log(error.response);
-        });
-    
-    // close modal    
-      this.setState({
-        modal: !this.state.modal
-      }); 
-     
+        if(userId === false){
+          console.log('wrong info')
+          alert("Wrong username or password");
 
+        }
+        else  {
+            // executed when the email and pass are correct: 
+            // combine user id with act id in table act_to_user
+              axios.post('http://localhost:4000/activities/act_to_user',{act_id:a_id, id:userId})
+              .then(res => {
+                console.log(userId);
+  
+              })
+              .catch(error => {
+                console.log(error.response);
+              });
+              
+          // fill a place in table activities column filled_places 
+          // gets act_id from state "a_id" 
+              axios.get('http://localhost:4000/activities/act_id/'+a_id)
+              .then(res => {
+                console.log(userId);    
+              })
+              .catch(error => {
+                console.log(error.response);
+              });
+          
+          // close modal    
+            this.setState({
+              modal: !this.state.modal
+            }); 
+        } 
   }
 
   render() {
