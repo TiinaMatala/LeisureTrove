@@ -34,11 +34,12 @@ class ModalExample extends React.Component {
     // refers to function in Confirm.js
       let email=document.getElementById('email').value;
       let password=document.getElementById('password').value;
-        Confirm(email, password);
+    
+      let userId =  Confirm(email, password);
         console.log(localStorage.getItem('userId'));
-      let userId = localStorage.getItem('userId');
+    
         
-        if(userId === false){
+        if(userId == false){
           console.log('wrong info')
           alert("Wrong username or password");
 
