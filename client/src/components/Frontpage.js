@@ -17,7 +17,7 @@ class Frontpage extends Component
       };
     }
   
-    componentDidMount = () => {
+    getData = () => {
       axios.get('http://localhost:4000/activities')
       .then(res => {
         const activities = res.data;
@@ -27,6 +27,16 @@ class Frontpage extends Component
       .catch(error => {
         console.log(error.response);
       });
+    }
+
+    componentDidMount = () => {
+      this.getData();
+        this.timer=setInterval(()=>this.getData(),5000);
+  }
+
+    componentWillUnmount() {
+      clearInterval(this.timer);
+      this.timer = null;
     }
 
 /*filtering button function */
