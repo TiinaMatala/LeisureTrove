@@ -34,6 +34,16 @@ var db = require('../database');
     },
     addUserId:function(id, callback) {
       return db.query('',[id], callback);
+    },
+
+    addAct: function(act_to_user, callback) {
+      console.log('try to insert');
+      console.log('act_id=',act_to_user.act_id);
+      console.log('id=',act_to_user.id);
+      return db.query(
+        'insert into act_to_user(act_id, id) values(?,?)',
+        [act_to_user.act_id, act_to_user.id], callback
+      );
     }
     
   };

@@ -69,5 +69,14 @@ router.get('/act_id/:id?', function(req, res, next) {
   });
 });
 
+router.post('/act_to_user', function(req, res, next) {
+  activities.addAct(req.body, function(err, count) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(req.body); //or return count for 1 & 0
+    }
+  });
+});
   
   module.exports = router;
