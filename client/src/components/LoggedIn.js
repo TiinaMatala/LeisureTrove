@@ -14,27 +14,6 @@ export default function loggedIn(props) {
 
     }
 
-    componentDidMount = () => {
-
-        axios.get('http://localhost:3000/activities')
-  
-        .then(res => {
-  
-          const activities = res.data;
-  
-          this.setState({ activities });
-  
-          console.log(this.state.activities);
-  
-        })
-  
-        .catch(error => {
-  
-          console.log(error.response);
-  
-        });
-  
-      }
 
     return (
 
@@ -48,7 +27,7 @@ export default function loggedIn(props) {
 
                     <div><h2>User page</h2></div>
                  </div>
-                 <div classname={styles.title}><h2>Activities</h2></div>
+                 <div classname={styles.title}><Link to ="/Activities"><button>Activities</button></Link></div>
 
                 
 
