@@ -18,7 +18,7 @@ export default function loggedIn(props) {
     return (
 
         <div className={ styles.loggedIn }>
-            <div className={styles.button}><Link to ="/"><button>logout</button></Link></div>
+            <div className={styles.button}><Link to ="/"><button onclick={logout}>logout</button></Link></div>
 
             <div className= { styles.header } >
 
