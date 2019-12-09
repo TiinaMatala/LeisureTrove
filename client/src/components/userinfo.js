@@ -39,18 +39,22 @@ class Userinfo extends Component {
         render(){
         return (
          <div classname="container">
+
+          <div className={styles.button}><Link to ="/edituser"><button>Edit</button></Link></div>
   
-              <h2>Selected user</h2>
+              <h2>user info</h2>
   
               <table className="table">
   
                  {this.state.users.map(users => (
   
-                  <tbody key={users.id}>
+                  <tbody key={id}>
   
-                  <tr><th>ID</th><td>{users.id}</td></tr>
+                  <tr><th>ID</th><td>{id}</td></tr>
+
+                  <tr><th>name</th><td>{users.name}</td></tr>
   
-                  <tr><th>username</th><td>{users.email}</td></tr>
+                  <tr><th>email</th><td>{users.email}</td></tr>
   
                   <tr><th>psssword</th><td>{users.password}</td></tr>                    
   
@@ -65,6 +69,6 @@ class Userinfo extends Component {
           );
   
         }
-  
+      }
       
   

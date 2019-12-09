@@ -4,7 +4,17 @@
   float: right;
   margin: 10px;
   align-content: flex-end;
- 
+}
+
+button{
+  background-color: #e7e7e7; 
+  border: none;
+  color: black;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
 }
 
 td{

@@ -38,10 +38,8 @@ class activities extends Component
                     <div className={ styles.flexContainer_div }>
                       <li><h2>{activities.name}</h2></li>
                       <li>{activities.location}</li>
-                      <li>{activities.price} €</li>
-                      <li><p>{activities.act_info}</p></li>
-                      <li>{activities.filled_places}/{activities.max_places}</li>
-                      <ModalExample id={activities.act_id} />
+                     <li><p>{activities.act_info}</p></li>
+                      <ModalExample id={users.id} />
                     </div>
                   </div>
                 </ul>))
