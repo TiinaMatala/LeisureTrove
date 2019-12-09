@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 
-
+/*
 class EditUser extends Component {
 
   constructor(props) {
@@ -107,7 +107,7 @@ class EditUser extends Component {
 
     let name=myauth.getname();
     let email=myauth.getemail();
-    let pass=myauth.getPass();
+    let password=myauth.getPass();
 
     console.log("update handle");
 
@@ -115,7 +115,7 @@ class EditUser extends Component {
 
     const id = this.state.id;
 
-    const { name,email, password} = this.state;
+    const { email, password} = this.state;
 
 
 
@@ -138,4 +138,4 @@ class EditUser extends Component {
       
 
   };
-}
+} */

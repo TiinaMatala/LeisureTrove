@@ -26,7 +26,7 @@ export default function loggedIn(props) {
 
             <h1>Heading</h1>
 
-                    <div><h2>User page</h2></div>
+                    <div><Link to ="/Userinfo"><button>User page</button></Link></div>
                  </div>
                  <div classname={styles.title}><Link to ="/Activities"><button>Activities</button></Link></div>
 

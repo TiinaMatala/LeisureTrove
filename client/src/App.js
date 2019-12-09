@@ -6,6 +6,9 @@ import Register from './components/Register';
 import Login from './components/Login';
 import LoggedIn from './components/LoggedIn';
 import ProtectedRoute from './components/ProtectedRoute';
+import Activities from './components/Activities';
+import Userinfo from './components/Userinfo';
+import Edituser from './components/Edituser';
 import axios from 'axios';
 
 export default class App extends Component {
@@ -86,6 +89,11 @@ export default class App extends Component {
 
               />
             }></Route>
+             
+            
+             <Route path="/Userinfo/:id" exact component={Userinfo} />
+          
+            }
           <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
            {
              (routeProps) => 

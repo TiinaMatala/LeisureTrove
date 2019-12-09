@@ -1,12 +1,11 @@
-import React from 'react';
+import React , {Component} from 'react';
 
 import styles from './activities.module.css';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import axios from 'axios';
 
-class activities extends Component
-{
+class activities extends Component {
     constructor() 
     {
       super();
@@ -39,7 +38,6 @@ class activities extends Component
                       <li><h2>{activities.name}</h2></li>
                       <li>{activities.location}</li>
                      <li><p>{activities.act_info}</p></li>
-                      <ModalExample id={users.id} />
                     </div>
                   </div>
                 </ul>))

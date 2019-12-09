@@ -19,7 +19,7 @@ class Userinfo extends Component {
 
         };
 
-        this.getuser(this.props.match.params.id);
+        this.getuser(this.props.users.id);
 
     }
 
