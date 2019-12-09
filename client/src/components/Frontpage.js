@@ -13,7 +13,8 @@ class Frontpage extends Component
       super();
   
       this.state = {
-        activities: []
+        activities: [],
+        filled_places:[]
       };
     }
   
@@ -22,22 +23,34 @@ class Frontpage extends Component
       .then(res => {
         const activities = res.data;
         this.setState({ activities });
-        console.log(this.state.activities);
+        //console.log(this.state.activities);
       })
       .catch(error => {
         console.log(error.response);
       });
     }
 
+   /*  getFilledPlaces = () => {
+      axios.get('http://localhost:4000/places/filled_places')
+      .then(res => {
+        const filled_places = res.data;
+        this.setState({ filled_places });
+        //console.log(this.state.activities);
+      })
+      .catch(error => {
+        console.log(error.response);
+      });
+    }*/
     componentDidMount = () => {
       this.getData();
-        this.timer=setInterval(()=>this.getData(),5000);
+      //this.getFilledPlaces();
+        //this.timer=setInterval(()=>this.getFilledPlaces(),5000);
   }
-
+/*
     componentWillUnmount() {
       clearInterval(this.timer);
       this.timer = null;
-    }
+    } */
 
 /*filtering button function */
     getByType(type){

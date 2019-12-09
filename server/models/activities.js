@@ -45,6 +45,7 @@ var db = require('../database');
         [act_to_user.act_id, act_to_user.id], callback
       );
     }
+  
     
   };
   module.exports = activities;

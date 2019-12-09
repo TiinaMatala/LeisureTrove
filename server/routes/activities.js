@@ -4,6 +4,7 @@ var express = require('express');
 
 
   router.get('/:id?', function(req, res, next) {
+    console.log("test2");
     if (req.params.id) {
       activities.getById(req.params.id, function(err, rows) {
         if (err) {
@@ -78,5 +79,6 @@ router.post('/act_to_user', function(req, res, next) {
     }
   });
 });
+
   
   module.exports = router;
