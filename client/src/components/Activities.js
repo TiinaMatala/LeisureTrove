@@ -18,14 +18,14 @@ class Activities extends Component {
 
         };
 
-        this.getactivities(localStorage.getItem('userId'));
+        this.getactivities(this.props.match.params.id);
 
     }
 
 
-    getactivities(id) {
+    getactivities(act_id) {
 
-      axios.get('http://localhost:4000/activities/'+id).then(res => {
+      axios.get('http://localhost:4000/activities/'+act_id).then(res => {
 
       const activities = res.data;
 
@@ -56,7 +56,7 @@ class Activities extends Component {
 
                 {this.state.activities.map(activities => (
 
-                <tbody> 
+               <tbody key={activities.id}>
 
                 <tr><th>activity name</th><td>{activities.name}</td></tr>
 
