@@ -91,8 +91,29 @@ export default class App extends Component {
             }></Route>
              
             
-             <Route path="/Userinfo/:id" exact component={Userinfo} />
-          
+             <Route path="/Userinfo" exact render={
+               (routeProps)  =>
+               <Userinfo 
+               { ...routeProps } 
+               />
+               
+             }>
+                      </Route>
+
+                      <Route path="/" exact render={
+               (routeProps)  =>
+               <Activities
+               { ...routeProps } 
+               />
+                           }>
+                      </Route>
+                      <Route path="/Edituser" exact render={
+               (routeProps)  =>
+               <Edituser
+               { ...routeProps } 
+               />
+                           }>
+                      </Route>
             }
           <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
            {

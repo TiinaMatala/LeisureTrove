@@ -19,7 +19,7 @@ class Userinfo extends Component {
 
         };
 
-        this.getuser(this.props.users.id);
+        this.getuser(localStorage.getItem('userId'));
 
     }
 
@@ -27,7 +27,7 @@ class Userinfo extends Component {
 
     getuser(id) {
 
-        axios.get('http://localhost:4000/users').then(res => {
+        axios.get('http://localhost:4000/users/'+id).then(res => {
 
         const users = res.data;
 
@@ -38,7 +38,26 @@ class Userinfo extends Component {
         }
         render(){
         return (
-         <div classname="container">
+            <div>
+            <div className={styles.button}><Link to ="/"><button>logout</button></Link></div>
+
+            <div className= { styles.header } >
+
+           
+
+            <h1>Heading</h1>
+
+                    
+                 </div>
+
+                 <div>
+            
+            
+                 <li><a><Link to ="/userinfo"><button>User information</button></Link></a></li>
+                 <li><a><Link to ="/activities"><button>Activities</button></Link></a></li> 
+                 
+                 </div>
+                 <div>
 
           <div className={styles.button}><Link to ="/edituser"><button>Edit</button></Link></div>
   
@@ -48,9 +67,7 @@ class Userinfo extends Component {
   
                  {this.state.users.map(users => (
   
-                  <tbody key={id}>
-  
-                  <tr><th>ID</th><td>{id}</td></tr>
+                  <tbody key={users.id}>
 
                   <tr><th>name</th><td>{users.name}</td></tr>
   
@@ -64,11 +81,11 @@ class Userinfo extends Component {
   
               </table>
   
-            
+              </div>
   </div>
           );
   
         }
       }
-      
+      export default Userinfo ;
   

@@ -18,18 +18,25 @@ export default function loggedIn(props) {
     return (
 
         <div className={ styles.loggedIn }>
+            
             <div className={styles.button}><Link to ="/"><button onclick={logout}>logout</button></Link></div>
 
             <div className= { styles.header } >
 
-           <div className={styles.button}><Link to ="/Frontpage"><button>logout</button></Link></div>
+           
 
-            <h1>Heading</h1>
-
-                    <div><Link to ="/Userinfo"><button>User page</button></Link></div>
+            <h1>USER PAGE</h1>
+                 <h2>Welcome!</h2>
+                    
                  </div>
-                 <div classname={styles.title}><Link to ="/Activities"><button>Activities</button></Link></div>
 
+                 <div>
+            
+            
+                 <li><a><Link to ="/Userinfo"><button>User information</button></Link></a></li>
+                 <li><a><Link to ="/Activities"><button>Activities</button></Link></a></li> 
+                 
+                 </div>
                 
 
           </div>

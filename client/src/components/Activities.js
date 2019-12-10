@@ -1,49 +1,82 @@
-import React , {Component} from 'react';
-
-import styles from './activities.module.css';
-
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
 import axios from 'axios';
 
-class activities extends Component {
-    constructor() 
-    {
-      super();
-  
-      this.state = {
+
+
+class Activities extends Component {
+
+    constructor(props) {
+
+        super(props);
+
+        this.getactivities = this.getactivities.bind(this);
+
+        this.state = {
+
         activities: []
-      };
+
+        };
+
+        this.getactivities(localStorage.getItem('userId'));
+
     }
-  
-    componentDidMount = () => {
-      axios.get('http://localhost:4000/activities')
-      .then(res => {
-        const activities = res.data;
-        this.setState({ activities });
-        console.log(this.state.activities);
-      })
-      .catch(error => {
-        console.log(error.response);
+
+
+    getactivities(id) {
+
+      axios.get('http://localhost:4000/activities/'+id).then(res => {
+
+      const activities = res.data;
+
+      this.setState({ activities });
+
       });
-    }
- 
-    render(){
+
+      }
+
+   
+      render() {
+
         return (
 
-        <div>
-            {this.state.activities.map(activities => (  
-                <ul key={activities.act_id} className={styles.ul}>
-                  <div className={ styles.flexContainer }>
-                    <div className={ styles.flexContainer_div }>
-                      <li><h2>{activities.name}</h2></li>
-                      <li>{activities.location}</li>
-                     <li><p>{activities.act_info}</p></li>
-                    </div>
-                  </div>
-                </ul>))
-              }
+          <div className="container">
 
-              </div>
-        )
+            <h2>activity list</h2>
+
+            <table className="table">
+
+              <thead>
+
+                
+
+              </thead>
+
+              
+
+                {this.state.activities.map(activities => (
+
+                <tbody> 
+
+                <tr><th>activity name</th><td>{activities.name}</td></tr>
+
+                <tr><th></th><td>{activities.location}</td></tr>    
+
+                <tr><th></th><td>{activities.price}</td></tr>                    
+
+                </tbody>         
+
+                ))}
+
+            </table>
+
+          </div>
+
+        );
+
+      }
+
     }
-}
+
+
+ export default Activities ;
