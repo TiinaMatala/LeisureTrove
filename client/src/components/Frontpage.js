@@ -13,20 +13,39 @@ class Frontpage extends Component
       super();
   
       this.state = {
-        activities: []
+        activities: [],
+        filled_places:[]
       };
     }
+
+    changeUpdate(type) {
+     localStorage.setItem('activeType', type);
+     this.changeType();
+      
+    }
+    changeType(){
+        this.getByType(localStorage.getItem('activeType'));
+        this.timer=setInterval(()=>this.getByType(localStorage.getItem('activeType')),5000);
+      
+    }
   
-    componentDidMount = () => {
+    getData = () => {
       axios.get('http://localhost:4000/activities')
       .then(res => {
         const activities = res.data;
         this.setState({ activities });
-        console.log(this.state.activities);
       })
       .catch(error => {
         console.log(error.response);
       });
+    }
+    componentDidMount = () => {
+      this.getData();
+  }
+
+    componentWillUnmount() {
+      clearInterval(this.timer);
+      this.timer = null;
     }
 
 /*filtering button function */
@@ -62,11 +81,11 @@ class Frontpage extends Component
 
 {/*these are the buttons for filtering activities */}
             <div className={styles.filter}>
-              <button onClick={this.componentDidMount}>All</button><br/>
-              <button onClick={this.getByType.bind(this, "music")}>Music</button><br/>
-              <button onClick={this.getByType.bind(this, "arts")}>Arts</button><br/>
-              <button onClick={this.getByType.bind(this, "outdoors")}>Outdoors</button><br/>
-              <button onClick={this.getByType.bind(this, "indoors")}>Indoors</button>
+              <button onClick={this.changeUpdate.bind(this, "all")}>All</button><br/>
+              <button onClick={this.changeUpdate.bind(this, "music")}>Music</button><br/>
+              <button onClick={this.changeUpdate.bind(this, "arts")}>Arts</button><br/>
+              <button onClick={this.changeUpdate.bind(this, "outdoors")}>Outdoors</button><br/>
+              <button onClick={this.changeUpdate.bind(this, "indoors")}>Indoors</button>
             </div>
 
 {/*this is the activity card */}
@@ -79,7 +98,7 @@ class Frontpage extends Component
                       <li>{activities.price} €</li>
                       <li><p>{activities.act_info}</p></li>
                       <li>{activities.filled_places}/{activities.max_places}</li>
-                      <ModalExample a_id={activities.act_id}  />
+                      <ModalExample a_id={activities.act_id} />
                     </div>
                   </div>
                 </ul>))
