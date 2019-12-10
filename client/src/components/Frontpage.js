@@ -19,7 +19,6 @@ class Frontpage extends Component
     }
 
     changeUpdate(type) {
-     //this.setState({ activeType: type });
      localStorage.setItem('activeType', type);
      this.changeType();
       
@@ -35,7 +34,6 @@ class Frontpage extends Component
       .then(res => {
         const activities = res.data;
         this.setState({ activities });
-        //console.log(this.state.activities);
       })
       .catch(error => {
         console.log(error.response);
