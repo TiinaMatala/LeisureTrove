@@ -39,7 +39,10 @@ export default class Login extends Component {
             } 
             if(res.data===false){
               console.log('un auth');
-              localStorage.setItem('email','Guest');
+              document.getElementById("email").value="";
+              document.getElementById("password").value="";
+              this.props.loginFail();
+              alert('Please enter correct email and password');
             }
             else {
               console.log('authorized');
@@ -50,7 +53,7 @@ export default class Login extends Component {
               this.props.loginSuccess();
               this.props.history.push(this.props.redirectPathOnSuccess);
             }
-            this.setState({email: localStorage.getItem('localStorageEmail')});
+            //this.setState({email: localStorage.getItem('localStorageEmail')});
           })
           .catch(() => {
             this.props.loginFail();
@@ -88,12 +91,12 @@ onChange = e => {
                         
                         <tr>
                             <td><label htmlFor="email">Email</label></td>
-                            <td><input name="email" type="text" onChange={this.onChange}></input></td>
+                            <td><input name="email" id="email" type="text"  onChange={this.onChange} required></input></td>
                         </tr>
 
                         <tr>
                             <td><label htmlFor="password">Password</label></td>
-                            <td><input name="password" type="password" onChange={this.onChange}></input></td>
+                            <td><input name="password" type="password" id="password" onChange={this.onChange} required></input></td>
                         </tr>
 
                         <tr>
