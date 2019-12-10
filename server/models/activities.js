@@ -25,8 +25,14 @@ var db = require('../database');
       );
     },
     getByType:function(value,callback) {
+      if (value==='all') {
+        return db.query('select * from activities order by act_id asc',
+        [value], callback);
+      }
+      else{
       return db.query('select * from activities where act_type=? order by act_id desc',
       [value], callback);
+      }
     },
     
     joinUpdate:function(id, callback) {

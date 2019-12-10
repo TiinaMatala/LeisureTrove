@@ -103,7 +103,7 @@ router.post('/login', function(request, response) {
 			response.end();
 		});
 	} else {
-		response.send(false);
+		response.send('Please enter email and password');
 		response.end();
 	}
 }); 
