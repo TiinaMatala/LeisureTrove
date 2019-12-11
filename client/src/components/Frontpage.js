@@ -13,8 +13,7 @@ class Frontpage extends Component
       super();
   
       this.state = {
-        activities: [],
-        filled_places:[]
+        activities: []
       };
     }
 
@@ -40,7 +39,7 @@ class Frontpage extends Component
       });
     }
     componentDidMount = () => {
-      this.getData();
+      this.changeUpdate('all');
   }
 
     componentWillUnmount() {
@@ -63,13 +62,13 @@ class Frontpage extends Component
 
     render(){
     return (
-        <div>
+        <div className={styles.frontpage}>
             <div className={styles.header}>
                 <h1 className={styles.h1} style={{flexGrow: 8}}>Heading</h1>
                 
 
-                    <div className={styles.button}><Link to ="/login"><button>Sign in</button></Link></div>
-                    <div className={styles.button}><Link to ="/register"><button>Sign up</button></Link></div>
+                    <div ><Link to ="/login"><button className={styles.button}>Sign in</button></Link></div>
+                    <div ><Link to ="/register"><button className={styles.button}>Sign up</button></Link></div>
 
                 
             </div>
@@ -81,11 +80,11 @@ class Frontpage extends Component
 
 {/*these are the buttons for filtering activities */}
             <div className={styles.filter}>
-              <button onClick={this.changeUpdate.bind(this, "all")}>All</button><br/>
-              <button onClick={this.changeUpdate.bind(this, "music")}>Music</button><br/>
-              <button onClick={this.changeUpdate.bind(this, "arts")}>Arts</button><br/>
-              <button onClick={this.changeUpdate.bind(this, "outdoors")}>Outdoors</button><br/>
-              <button onClick={this.changeUpdate.bind(this, "indoors")}>Indoors</button>
+              <button className={styles.button} onClick={this.changeUpdate.bind(this, "all")}>All</button><br/>
+              <button className={styles.button} onClick={this.changeUpdate.bind(this, "music")}>Music</button><br/>
+              <button className={styles.button} onClick={this.changeUpdate.bind(this, "arts")}>Arts</button><br/>
+              <button className={styles.button} onClick={this.changeUpdate.bind(this, "outdoors")}>Outdoors</button><br/>
+              <button className={styles.button} onClick={this.changeUpdate.bind(this, "indoors")}>Indoors</button>
             </div>
 
 {/*this is the activity card */}

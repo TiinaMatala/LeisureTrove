@@ -57,7 +57,7 @@ onChange = e => {
                 <div className={styles.header}>
                 <h1>Header</h1>
                 {this.state.message}
-            </div>
+                </div>
 
             <div className= {styles.registerForm}>
                 <h2>REGISTER</h2>
@@ -86,8 +86,8 @@ onChange = e => {
                     </tr>
 
                     <tr>
-                        <td><input type="submit" value="Submit"/></td>
-                        <td><button onClick = { this.Cancel }>Cancel</button></td>
+                        <td><input className={styles.submit} type="submit" value="Submit"/></td>
+                        <td><button onClick = { this.Cancel } className={styles.button}>Cancel</button></td>
                     </tr>
                   </tbody>
                   </table>

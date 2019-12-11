@@ -76,9 +76,10 @@ onChange = e => {
             <div>
                 <div className={ styles.header }>
                 <h1>Header</h1>
-            </div>
+                </div>
 
-            <h2>Login</h2>
+                <div className= {styles.login}>
+                <h2>LOGIN</h2>
             
             <form onSubmit={ this.login.bind(this) }>
                 <div className={ styles.loginForm }>
@@ -100,8 +101,8 @@ onChange = e => {
                         </tr>
 
                         <tr>
-                            <td><button type="submit">Login</button></td>
-                            <td><button onClick={ this.Cancel }>Cancel</button></td>
+                            <td><button className={styles.submit} type="submit">Login</button></td>
+                            <td><button onClick={ this.Cancel } className={styles.button}>Cancel</button></td>
                         </tr>
 
                         </tbody>  
@@ -111,8 +112,8 @@ onChange = e => {
                 </div>
 
             </form>
-            
             </div>
+          </div>
         )
     }
 }
