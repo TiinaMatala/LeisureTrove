@@ -1,82 +1,91 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
 import axios from 'axios';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom"; 
 
 
 class Activities extends Component {
 
-    constructor(props) {
+    constructor() {
 
-        super(props);
+      super();
 
-        this.getactivities = this.getactivities.bind(this);
+      this.state = {
 
-        this.state = {
+        act_to_user: []
 
-        activities: []
+      };
 
-        };
+    }
 
-        this.getactivities(this.props.match.params.id);
+    
+
+    componentDidMount() {
+
+      axios.get('http://localhost:4000/act_to_user/').then(res => {
+
+        const act_to_user = res.data;
+    
+        this.setState({ act_to_user });
+        
+      });
 
     }
 
 
-    getactivities(act_id) {
 
-      axios.get('http://localhost:4000/activities/'+act_id).then(res => {
+    render() {
 
-      const activities = res.data;
+      return (
 
-      this.setState({ activities });
+        <div className="container">
 
-      });
+          <h2>Activity list</h2>
 
-      }
+          <table className="table table-hover table-condensed">
 
-   
-      render() {
-
-        return (
-
-          <div className="container">
-
-            <h2>activity list</h2>
-
-            <table className="table">
-
-              <thead>
-
-                
-
-              </thead>
+          <thead>
 
               
 
-                {this.state.activities.map(activities => (
+              <tr><th>ID</th><th>name</th><th>Firstname</th><th>Lastname</th><th>Return date</th><th>Select</th></tr>
 
-               <tbody key={activities.id}>
+          </thead>
 
-                <tr><th>activity name</th><td>{activities.name}</td></tr>
+          <tbody>
 
-                <tr><th></th><td>{activities.location}</td></tr>    
+         
 
-                <tr><th></th><td>{activities.price}</td></tr>                    
+              {this.state.act_to_user.map(act_to_user => (
+                <tr key={act_to_user.link_id}>
+  <td>{act_to_user.link_id}</td>
 
-                </tbody>         
+  <td>{act_to_user.id}</td>
 
-                ))}
+  
 
-            </table>
+              
 
-          </div>
+                
 
-        );
+                       
 
-      }
+              </tr>         
+
+              ))}
+                </tbody>
+
+          </table>
+
+        </div>
+
+      );
 
     }
 
+  }
+
+
+
+ 
 
  export default Activities ;
