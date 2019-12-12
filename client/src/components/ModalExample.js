@@ -9,16 +9,18 @@ class ModalExample extends React.Component {
     super(props);
     this.state = {
       modal: false,
-      a_id:this.props.a_id,
+      a_id: this.props.a_id,
       email: "",
       password: "",
+      filled: this.props.filled,
+      max:  this.props.max
     };
     this.onChange = this.onChange.bind(this);
     this.confirm = this.confirm.bind(this);
-
     this.toggle = this.toggle.bind(this);
   }
 
+ 
   onChange = e => {
     const state = this.state;
     state[e.target.name] = e.target.value;
@@ -26,20 +28,35 @@ class ModalExample extends React.Component {
   }
 
 
-
+/**toggle modal */
   toggle() {
     this.setState({
       modal: !this.state.modal
     });
+  
   }
+
+/**disable modal when filled places = max places */
+/**activity is full so no new applicants allowed */
+/*   disableModal() {
+    if(this.state.filled = this.state.max) {
+      this.setState({
+        buttonState: true
+      })
+    }
+    else {
+      this.setState({
+        buttonState: false
+      })
+    }
+  } */
 
   /* function for confirm button*/
   /* has to check if the email and password are correct */
-  /* needs to collect user id based on email and password */
-  /* not a login! */
   /* a_id = activity id */
 
   confirm = event => {
+
      // event.preventDefault();
     // refers to function in Confirm.js
       
@@ -75,6 +92,9 @@ class ModalExample extends React.Component {
               .catch(error => {
                 console.log("catch fill place");
               });
+
+          //check filled places
+          //this.disableModal();
           
           // close modal    
               this.setState({
@@ -82,12 +102,13 @@ class ModalExample extends React.Component {
               }); 
         } 
       })
+    
 }
 
   render() {
     return (
       <div className={styles.modalStyle}>
-        <Button className={styles.button} onClick={this.toggle}>{this.props.buttonLabel}Join</Button>
+        <Button disabled={this.props.buttonState}  className={styles.button} onClick={this.toggle} >{this.props.buttonLabel}Join</Button>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
           <ModalHeader toggle={this.toggle}>Confirm</ModalHeader>
           <ModalBody>
