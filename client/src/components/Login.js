@@ -75,7 +75,7 @@ onChange = e => {
         return (
             <div>
                 <div className={ styles.header }>
-                <h1>Header</h1>
+                <h1 className={styles.h1}>Leisure Trove</h1>
                 </div>
 
                 <div className= {styles.login}>

@@ -64,7 +64,7 @@ class Frontpage extends Component
     return (
         <div className={styles.frontpage}>
             <div className={styles.header}>
-                <h1 className={styles.h1} style={{flexGrow: 8}}>Heading</h1>
+                <h1 className={styles.h1} style={{flexGrow: 8}}>Leisure Trove</h1>
                 
 
                     <div ><Link to ="/login"><button className={styles.button}>Sign in</button></Link></div>
@@ -75,7 +75,9 @@ class Frontpage extends Component
             
 {/*this is the info box */}
             <div className={styles.notice}>
-                <h3>HOX! Lorem ipsum</h3>
+                <h3>Looking for local activities for people of all ages? <br></br> 
+                Leisure Trove is the reservation system for all culture and sport activities close to You.
+                </h3>
             </div>
 
 {/*these are the buttons for filtering activities */}

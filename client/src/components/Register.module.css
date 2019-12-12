@@ -86,6 +86,12 @@ label {
     text-decoration: none;
   }
 
+  .h1{
+    font-size: 60px;
+    margin: 20px;
+    font-family: 'Philosopher', sans-serif;
+  }
+
   @media screen and (max-width: 600px) {
     .col-25, .col-75, input[type=submit] {
       width: 100%;
