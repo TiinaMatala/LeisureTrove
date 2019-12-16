@@ -79,11 +79,11 @@ onChange = e => {
                 </div>
 
                 <div className= {styles.login}>
-                <h2>LOGIN</h2>
-            
-            <form onSubmit={ this.login.bind(this) }>
-                <div className={ styles.loginForm }>
-                
+                <h3>LOGIN <br></br>
+                After login you can change your personal details and browse through all the activities you have joined</h3>
+                </div>
+            <div className={ styles.loginForm }>
+              <form onSubmit={ this.login.bind(this) }>
                     <table>
 
                         <thead></thead>
@@ -109,9 +109,8 @@ onChange = e => {
 
                     </table>
 
-                </div>
-
-            </form>
+                
+               </form>
             </div>
           </div>
         )

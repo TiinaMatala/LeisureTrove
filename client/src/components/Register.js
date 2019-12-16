@@ -53,14 +53,18 @@ onChange = e => {
 
     render() {
         return (
-            <div>
+            <div className={styles.register}> 
                 <div className={styles.header}>
                 <h1 className={styles.h1}>Leisure Trove</h1>
                 {this.state.message}
                 </div>
 
-            <div className= {styles.registerForm}>
-                <h2>REGISTER</h2>
+            <div>
+                <div className= {styles.registerForm}>
+                  <h3>REGISTER<br></br>
+                  Here you can register to our service. Please note that your email works as your username when you login</h3>
+                </div>
+                
                 <div className={styles.container}>
                 <form onSubmit= { this.executeRegister.bind(this) }>
                   <table>
