@@ -35,6 +35,10 @@ var db = require('../database');
       }
     },
     
+     getact:function(id,callback) {
+      return db.query('select * from activities inner join act_to_user on activities.act_id=act_to_user.act_id where id=?', [id], callback);
+    },
+
     joinUpdate:function(id, callback) {
       return db.query('update activities set filled_places = filled_places+1 where act_id=? ', [id], callback);
     },
@@ -51,6 +55,8 @@ var db = require('../database');
         [act_to_user.act_id, act_to_user.id], callback
       );
     }
+
+    
   
     
   };

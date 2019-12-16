@@ -19,7 +19,7 @@ export default function loggedIn(props) {
 
         <div className={ styles.loggedIn }>
             
-            <div className={styles.button}><Link to ="/"><button onclick={logout}>logout</button></Link></div>
+            <div className={styles.button}><Link to ="/"><button onClick={logout}>logout</button></Link></div>
 
             <div className= { styles.header } >
 
@@ -31,10 +31,8 @@ export default function loggedIn(props) {
                  </div>
 
                  <div>
-            
-            
-                 <li><a><Link to ="/Userinfo"><button>User information</button></Link></a></li>
-                 <li><a><Link to ="/Activities"><button>Activities</button></Link></a></li> 
+                 <li><Link to ="/Userinfo"><button>User information</button></Link></li>
+                 <li><Link to ="/Activities"><button>Activities</button></Link></li> 
                  
                  </div>
                 

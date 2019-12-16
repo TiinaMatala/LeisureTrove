@@ -19,7 +19,7 @@ class Userinfo extends Component {
 
         };
 
-        this.getuser(localStorage.getItem('userId'));
+       this.getuser(localStorage.getItem('userId'));
 
     }
 
@@ -39,16 +39,11 @@ class Userinfo extends Component {
         render(){
         return (
             <div>
+                <div className={styles.header}>
+                <h1 className={styles.h1} style={{flexGrow: 8}}>Heading</h1>
             <div className={styles.button}><Link to ="/"><button>logout</button></Link></div>
 
-            <div className= { styles.header } >
-
-           
-
-            <h1>Heading</h1>
-
-                    
-                 </div>
+            </div>
 
                  <div>
             

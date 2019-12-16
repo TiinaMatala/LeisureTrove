@@ -100,7 +100,7 @@ export default class App extends Component {
              }>
                       </Route>
 
-                      <Route path="/" exact render={
+                      <Route path="/Activities" exact render={
                (routeProps)  =>
                <Activities
                { ...routeProps } 

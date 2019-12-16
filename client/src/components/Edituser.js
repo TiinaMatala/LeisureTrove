@@ -200,9 +200,9 @@ class EditUser extends Component {
                 <td />
 
                 <td>
-                <input type="submit" value="TEst"/>
+                <input type="submit" value="Edit"/>
 
-                  <button className="btn btn-primary" type="submit">Edit </button>
+                  <button type="submit"><Link to ="/userinfo" >Back</Link></button>
 
                 </td>
 
