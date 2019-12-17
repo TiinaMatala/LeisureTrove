@@ -17,27 +17,30 @@ export default function loggedIn(props) {
 
     return (
 
-        <div className={ styles.loggedIn }>
-            
-            <div className={styles.button}><Link to ="/"><button onClick={logout}>logout</button></Link></div>
+        <div >
+             <div className={styles.header}>
+                <h1 className={styles.h1} style={{flexGrow: 8}}>User page</h1>
+            <div className={styles.button}><Link to ="/"><button>logout</button></Link></div>
 
-            <div className= { styles.header } >
+            </div>
 
            
 
-            <h1>USER PAGE</h1>
-                 <h2>Welcome!</h2>
+            <div className={styles.notice}>
+                <h3>Welcome!</h3>
+            </div>
                     
-                 </div>
+                 
 
-                 <div>
+                 <div className={styles.menu}>
+                    <ul className={styles.li}>
                  <li><Link to ="/Userinfo"><button>User information</button></Link></li>
                  <li><Link to ="/Activities"><button>Activities</button></Link></li> 
-                 
+                 </ul>
                  </div>
                 
 
-          </div>
+                </div>
 
         
         

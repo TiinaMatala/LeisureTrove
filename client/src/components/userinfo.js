@@ -46,11 +46,11 @@ class Userinfo extends Component {
             </div>
 
                  <div>
-            
+             <ul className={styles.li}>
             
                  <li><a><Link to ="/userinfo"><button>User information</button></Link></a></li>
                  <li><a><Link to ="/activities"><button>Activities</button></Link></a></li> 
-                 
+                 </ul>
                  </div>
                  <div>
 
