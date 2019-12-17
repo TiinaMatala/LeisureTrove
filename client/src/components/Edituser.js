@@ -112,6 +112,7 @@ class EditUser extends Component {
 
       })
 
+      alert("Information updated, press Back");
       
 
   };
@@ -120,93 +121,60 @@ class EditUser extends Component {
     return (
 <div>
             
-            <div className={styles.button}><Link to ="/"><button>logout</button></Link></div>
+<div className={styles.header}>
+                <h1 className={styles.h1} style={{flexGrow: 8}}>Leisure Trove</h1>
+                <div ><Link to ="/"><button className={styles.button}>Logout</button></Link></div>
 
-            <div className= { styles.header } >
+            </div>
 
-           
+            <div className={styles.notice}>
+               <h3>Update your user information <br></br>
+               </h3>
+            </div>   
 
-            <h1>Heading</h1>
+            <div>
+              <div className={styles.filter}>
+                <div><Link to ="/userinfo"><button className={styles.button}>Account</button></Link></div>
+                <div><Link to ="/activities"><button className={styles.button}>Activities</button></Link></div>
+              </div> 
+            </div>
 
-                    
-                 </div>
-
-                 <div>
-            
-            
-                 <li><a><Link to ="/"><button>User information</button></Link></a></li>
-                 <li><a><Link to ="/"><button>Activities</button></Link></a></li> 
-                 
-                 </div>
-                
-
-        <h2>Edit user</h2>
 
         <p className="error">{this.state.message}</p>
 
          <form onSubmit={this.handleSubmit}>
 
-          <table>
+          <table className={styles.table}>
           <tbody>
           <tr> <td>
                <label>Name</label>
               </td> 
               <td>
-
-                  <input type="text" name="name"
-
-                    onChange={this.onChange}
-
-                    value={this.state.name}
-
-                  />
-
-                </td>
-
-              </tr>
-
-            
-             <tr>
-
-                <td width="80px">
+                 <input type="text" name="name" onChange={this.onChange} value={this.state.name} />
+               </td>
+          </tr>
+          <tr><td width="80px">
                   <label>Email</label> </td>
-
              <td>
- <input type="text" name="email" value={this.state.email}
+                 <input type="text" name="email" value={this.state.email} onChange={this.onChange}  />
+             </td> 
+          </tr>
 
-                    onChange={this.onChange}  />
-                </td> </tr>
+          <tr> <td>
+               <label>Password</label> </td> 
+              <td>
+                  <input type="text" name="password" onChange={this.onChange} value={this.state.password}/>
+             </td>
+          </tr>
 
-
-
-              <tr> <td>
-               <label>Password</label>
-              </td> <td>
-
-                  <input type="text" name="password"
-
-                    onChange={this.onChange}
-
-                    value={this.state.password}
-
-                  />
-
-                </td>
-
-              </tr>
-
-              <tr>
-
-                <td />
-
+          <tr>
                 <td>
-                <input type="submit" value="Edit"/>
-
-                  <button type="submit"><Link to ="/userinfo" >Back</Link></button>
-
+                <input className={styles.button} type="submit" value="Edit"/>
                 </td>
-
-              </tr>
+                <td>
+                  <div><Link to ="/userinfo"><button className={styles.button}>Back</button></Link></div>
+                </td>
+          </tr>
 
             </tbody>
 

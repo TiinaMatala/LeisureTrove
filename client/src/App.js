@@ -114,7 +114,7 @@ export default class App extends Component {
                />
                            }>
                       </Route>
-            }
+            
           <ProtectedRoute isAuthenticated= { this.state.isAuthenticated } path="/Loggedin" exact render =
            {
              (routeProps) => 
