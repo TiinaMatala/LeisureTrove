@@ -40,41 +40,41 @@ class Userinfo extends Component {
         return (
             <div>
                 <div className={styles.header}>
-                <h1 className={styles.h1} style={{flexGrow: 8}}>Heading</h1>
-            <div className={styles.button}><Link to ="/"><button>logout</button></Link></div>
+                <h1 className={styles.h1} style={{flexGrow: 8}}>Leisure Trove</h1>
+            <div><Link to ="/"><button className={styles.button}>Logout</button></Link></div>
 
             </div>
 
-                 <div>
-             <ul className={styles.li}>
-            
-                 <li><a><Link to ="/userinfo"><button>User information</button></Link></a></li>
-                 <li><a><Link to ="/activities"><button>Activities</button></Link></a></li> 
-                 </ul>
+          <div className={styles.notice}>
+                <h3>Account</h3>
+        </div>
+
+            <div className={styles.filter}>
+                    <div><Link to ="/Userinfo"><button className={styles.button}>Account</button></Link></div>
+                    <div><Link to ="/Activities"><button className={styles.button}>Activities</button></Link></div>
                  </div>
+                
                  <div>
 
-          <div className={styles.button}><Link to ="/edituser"><button>Edit</button></Link></div>
-  
-              <h2>user info</h2>
-  
-              <table className="table">
+              <table className={styles.table}>
   
                  {this.state.users.map(users => (
   
                   <tbody key={users.id}>
 
-                  <tr><th>name</th><td>{users.name}</td></tr>
+                  <tr><th>Name</th><td>{users.name}</td></tr>
   
-                  <tr><th>email</th><td>{users.email}</td></tr>
+                  <tr><th>Email</th><td>{users.email}</td></tr>
   
-                  <tr><th>psssword</th><td>{users.password}</td></tr>                    
+                  <tr><th>Password</th><td>{users.password}</td></tr>                    
   
                   </tbody>         
   
                   ))}
-  
+                <div><Link to ="/edituser"><button className={styles.button}>Edit</button></Link></div>
+
               </table>
+
   
               </div>
   </div>
