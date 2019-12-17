@@ -62,6 +62,7 @@ class Frontpage extends Component
 
 
     render(){
+      
     return (
         <div className={styles.frontpage}>
             <div className={styles.header}>

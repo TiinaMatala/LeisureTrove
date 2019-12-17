@@ -80,5 +80,14 @@ router.post('/act_to_user', function(req, res, next) {
   });
 });
 
+router.get('/act_to_user/:value?', function(req, res, next) {
+  activities.getact(req.params.value, function(err, result) {
+    if (err) {
+      res.json(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
   
   module.exports = router;
