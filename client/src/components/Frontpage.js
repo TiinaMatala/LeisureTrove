@@ -13,8 +13,7 @@ class Frontpage extends Component
       super();
   
       this.state = {
-        activities: [],
-        filled_places:[]
+        activities: []
       };
     }
 
@@ -40,7 +39,7 @@ class Frontpage extends Component
       });
     }
     componentDidMount = () => {
-      this.getData();
+      this.changeUpdate('all');
   }
 
     componentWillUnmount() {
@@ -60,6 +59,7 @@ class Frontpage extends Component
         console.log(error.response);
       });
     }
+
 
     render(){
     return (
@@ -98,7 +98,11 @@ class Frontpage extends Component
                       <li>{activities.price} €</li>
                       <li><p>{activities.act_info}</p></li>
                       <li>{activities.filled_places}/{activities.max_places}</li>
-                      <ModalExample a_id={activities.act_id} />
+                      <ModalExample 
+                        a_id={activities.act_id}
+                        filled={activities.filled_places}
+                        max={activities.max_places} 
+                        buttonState={(activities.filled_places<=activities.max_places) ? true : false}/>
                     </div>
                   </div>
                 </ul>))
