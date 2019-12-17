@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+@font-face {
+  font-family: 'Philosopher';
+  src: local('Philosopher-Regular'), url(./fonts/Philosopher-Regular.ttf); format:('truetype');
+}
